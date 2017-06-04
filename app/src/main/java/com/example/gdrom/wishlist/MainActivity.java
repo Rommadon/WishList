@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements WishListView {
     WishListPresenter presenter = null;
     public ArrayList<WishList> wishList = new ArrayList<WishList>();
     private ArrayAdapter<WishList> wishListArrayAdapter;
+    private ArrayAdapter<WishList> searchwishListArrayAdapter;
     EditText cost,title,detail,titleStatus,search;
     private ListView lv;
 
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements WishListView {
         setContentView(R.layout.activity_main);
         lv = (ListView) findViewById(R.id.listview);
         cost = (EditText) findViewById(R.id.cost);
-        search = (EditText) findViewById(R.id.search);
+        search = (EditText) findViewById(R.id.editText);
         title=(EditText) findViewById(R.id.title);
         titleStatus=(EditText) findViewById(R.id.titleStatus);
         detail= (EditText) findViewById(R.id.detail);
@@ -66,8 +67,12 @@ public class MainActivity extends AppCompatActivity implements WishListView {
 
     public  void searchWishList(View view){
             String s = search.getText().toString();
+        lv.setAdapter(null);
 
         presenter.searchWishList(s);
+        searchwishListArrayAdapter = new ArrayAdapter<WishList>(this, android.R.layout.simple_list_item_1,presenter.getSearchWishList());
+        lv.setAdapter(searchwishListArrayAdapter);
+
 
 
     }
