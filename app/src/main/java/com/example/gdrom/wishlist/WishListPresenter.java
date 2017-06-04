@@ -12,6 +12,7 @@ public class WishListPresenter {
 
     public WishListView wishListView;
     private ArrayList<WishList> wishList;
+    private ArrayList<WishList> searchWishList = new ArrayList<WishList>();
 
 
 
@@ -41,5 +42,19 @@ public class WishListPresenter {
 
     public void searchWishList(String s) {
 
+        searchWishList.clear();
+
+
+
+        for(int i=0 ;i<wishList.size();i++){
+            if(wishList.get(i).getTitle().contains(s)){
+                searchWishList.add(wishList.get(i));
+
+            }
+        }
+    }
+
+    public ArrayList<WishList> getSearchWishList() {
+        return searchWishList;
     }
 }
