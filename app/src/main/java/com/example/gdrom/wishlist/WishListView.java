@@ -1,5 +1,7 @@
 package com.example.gdrom.wishlist;
 
+import android.view.View;
+
 import com.example.gdrom.wishlist.data.WishList;
 
 import java.util.ArrayList;
@@ -10,6 +12,9 @@ import java.util.ArrayList;
 
 public interface WishListView {
     void showListView(ArrayList<WishList> w) ;
+    void searchWishList(View view);
+    void changeStatus(View view);
+    void addWishList(View view);
 
 
 }
